@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="jme_vehicle_field_in_saleorder.list">
+      <field name="name">jme_vehicle_field_in_saleorder list</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='partner_shipping_id']" position="after">
+          <group>
+            <field name="vehicle_list" domain="[('customer_specific_id','=',partner_id)]"/>
+          </group>
+        </xpath>
+      </field>
+    </record>
+    
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="jme_vehicle_field_in_saleorder.action_window">
+      <field name="name">jme_vehicle_field_in_saleorder window</field>
+      <field name="res_model">jme_vehicle_field_in_saleorder.jme_vehicle_field_in_saleorder</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="jme_vehicle_field_in_saleorder.action_server">
+      <field name="name">jme_vehicle_field_in_saleorder server</field>
+      <field name="model_id" ref="model_jme_vehicle_field_in_saleorder_jme_vehicle_field_in_saleorder"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="jme_vehicle_field_in_saleorder" id="jme_vehicle_field_in_saleorder.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="jme_vehicle_field_in_saleorder.menu_1" parent="jme_vehicle_field_in_saleorder.menu_root"/>
+    <menuitem name="Menu 2" id="jme_vehicle_field_in_saleorder.menu_2" parent="jme_vehicle_field_in_saleorder.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="jme_vehicle_field_in_saleorder.menu_1_list" parent="jme_vehicle_field_in_saleorder.menu_1"
+              action="jme_vehicle_field_in_saleorder.action_window"/>
+    <menuitem name="Server to list" id="jme_vehicle_field_in_saleorder" parent="jme_vehicle_field_in_saleorder.menu_2"
+              action="jme_vehicle_field_in_saleorder.action_server"/>
+    -->
+  </data>
+</odoo>
